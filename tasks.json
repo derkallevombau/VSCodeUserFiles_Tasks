@@ -15,6 +15,11 @@
 			"command": "[ -d .git ] || git init && [ \"$(git remote show)\" ] || && hub create && git push -u origin master",
 			"problemMatcher": []
 		},
+		{
+			"label": "Add gjs typings",
+			"type": "shell",
+			"command": "npm link @ci-types/gjs && echo '{ \"exclude\": [\"node_modules\"] }' >jsconfig.json && mkdir typings && echo 'import \"@ci-types/gjs\";' >typings/gjs.d.ts"
+		}
 	],
 	// "inputs": [
 	// 	{
