@@ -18,12 +18,14 @@
 		{
 			"label": "Add gjs typings",
 			"type": "shell",
-			"command": "npm link @ci-types/gjs && echo '{ \"exclude\": [\"node_modules\"] }' >jsconfig.json && mkdir typings && echo 'import \"@ci-types/gjs\";' >typings/gjs.d.ts"
+			"command": "npm link @ci-types/gjs && echo '{ \"exclude\": [\"node_modules\"] }' >jsconfig.json && mkdir typings && echo 'import \"@ci-types/gjs\";' >typings/gjs.d.ts",
+			"problemMatcher": []
 		},
 		{
 			"label": "Configure Meson project",
 			"type": "shell",
 			"command": "mkdir -p build && meson setup -Dbuildtype=release -Ddebug=false -Doptimization=3 -Dstrip=true -Db_lto=true -Db_lto_threads=4 build .",
+			"problemMatcher": [],
 			"presentation":
 			{
 				"echo": true,
@@ -38,6 +40,7 @@
 			"label": "Build Meson project",
 			"type": "shell",
 			"command": "ninja -C build",
+			"problemMatcher": [],
 			"presentation":
 			{
 				"echo": true,
@@ -52,6 +55,7 @@
 			"label": "Install Meson project",
 			"type": "shell",
 			"command": "ninja -C build install",
+			"problemMatcher": [],
 			"presentation":
 			{
 				"echo": true,
