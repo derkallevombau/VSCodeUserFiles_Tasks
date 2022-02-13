@@ -11,8 +11,9 @@
 		// },
 		{
 			"label": "Create GitHub Repo",
+			"detail": "Creates a new repo on GitHub and adds it as remote ‘origin’ to the local repo in the cwd. If there is no local repo, it will be created first.",
 			"type": "shell",
-			"command": "[ -d .git ] || git init && [ \"$(git remote show)\" ] || && hub create && git push -u origin master",
+			"command": "[ -d .git ] || git init && hub create ${input:createGHRepo.pOpt} ${input:createGHRepo.projectName}",
 			"problemMatcher": []
 		},
 		{
@@ -66,13 +67,20 @@
 				"showReuseMessage": true,
 				"clear": true
 			}
-		},
+		}
 	],
-	// "inputs": [
-	// 	{
-	// 		"id": "projectName",
-	// 		"type": "promptString",
-	// 		"description": "The name of your newly created project."
-	// 	}
-	// ]
+	"inputs":
+	[
+		{
+			"id": "createGHRepo.projectName",
+			"description": "Enter name for new GitHub repo or leave empty to use name of cwd.",
+			"type": "promptString"
+		},
+		{
+			"id": "createGHRepo.pOpt",
+			"description": "Choose ‘-p’ to create a private GitHub repo or leave empty for a public one.",
+			"type": "pickString",
+			"options": ["-p", ""],
+		}
+	]
 }
