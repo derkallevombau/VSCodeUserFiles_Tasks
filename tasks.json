@@ -17,6 +17,7 @@
 		},
 		{
 			"label": "Add gjs typings",
+			"detail": "Adds Gnome JavaScript typings to the current project. ‘@ci-types/gjs’ must be installed globally for this to work.",
 			"type": "shell",
 			"command": "npm link @ci-types/gjs && echo '{ \"exclude\": [\"node_modules\"] }' >jsconfig.json && mkdir typings && echo 'import \"@ci-types/gjs\";' >typings/gjs.d.ts",
 			"problemMatcher": []
