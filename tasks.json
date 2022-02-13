@@ -22,7 +22,7 @@
 			"problemMatcher": []
 		},
 		{
-			"label": "Configure Meson project",
+			"label": "Meson project: Configure",
 			"type": "shell",
 			"command": "mkdir -p build && meson setup -Dbuildtype=release -Ddebug=false -Doptimization=3 -Dstrip=true -Db_lto=true -Db_lto_threads=4 build .",
 			"problemMatcher": [],
@@ -37,7 +37,7 @@
 			}
 		},
 		{
-			"label": "Build Meson project",
+			"label": "Meson project: Build",
 			"type": "shell",
 			"command": "ninja -C build",
 			"problemMatcher": [],
@@ -52,7 +52,7 @@
 			}
 		},
 		{
-			"label": "Install Meson project",
+			"label": "Meson project: Install",
 			"type": "shell",
 			"command": "ninja -C build install",
 			"problemMatcher": [],
