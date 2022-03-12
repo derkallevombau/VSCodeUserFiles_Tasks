@@ -68,7 +68,87 @@
 				"showReuseMessage": true,
 				"clear": true
 			}
-		}
+		},
+		{
+			"label": "Git: Begin interactive rebase with autostash",
+			"type": "shell",
+			"command": "exec-in-git-repo-root-dir git rebase -i --autostash ${input:gitRebaseArgRebaseMergesOrEmpty} ${input:gitRebaseArgs}",
+			"options": { "cwd": "${fileDirname}" },
+			"problemMatcher": [],
+			"presentation":
+			{
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": true
+			}
+		},
+		{
+			"label": "Git: Continue rebase",
+			"type": "shell",
+			"command": "exec-in-git-repo-root-dir git rebase --continue",
+			"options": { "cwd": "${fileDirname}" },
+			"problemMatcher": [],
+			"presentation":
+			{
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": true
+			}
+		},
+		{
+			"label": "Git: Abort rebase",
+			"type": "shell",
+			"command": "exec-in-git-repo-root-dir git rebase --abort",
+			"options": { "cwd": "${fileDirname}" },
+			"problemMatcher": [],
+			"presentation":
+			{
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": true
+			}
+		},
+		{
+			"label": "Git: Commit Staged (Amend)",
+			"type": "shell",
+			"command": "exec-in-git-repo-root-dir git commit --amend",
+			"options": { "cwd": "${fileDirname}" },
+			"problemMatcher": [],
+			"presentation":
+			{
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": true
+			}
+		},
+		{
+			"label": "Git: Commit using mtime",
+			"type": "shell",
+			"command": "exec-in-git-repo-root-dir git-commit-using-mtime",
+			"options": { "cwd": "${fileDirname}" },
+			"problemMatcher": [],
+			"presentation":
+			{
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": true
+			}
+		},
 	],
 	"inputs":
 	[
@@ -82,6 +162,18 @@
 			"description": "Choose ‘-p’ to create a private GitHub repo or leave empty for a public one.",
 			"type": "pickString",
 			"options": ["-p", ""],
-		}
+		},
+		{
+			"id": "gitRebaseArgRebaseMergesOrEmpty",
+			"description": "Choose ‘--rebase-merges’ if you want to preserve merge commits or leave empty if you don't want.",
+			"type": "pickString",
+			"options": ["--rebase-merges", ""]
+		},
+		{
+			"id": "gitRebaseArgs",
+			"description": "Please enter further args or press Enter to use ‘HEAD^’.",
+			"type": "promptString",
+			"default": "HEAD^"
+		},
 	]
 }
