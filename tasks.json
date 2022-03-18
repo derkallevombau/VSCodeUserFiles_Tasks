@@ -12,9 +12,9 @@
 		// },
 		{
 			"label": "Create GitHub Repo",
-			"detail": "Creates a new repo on GitHub and adds it as remote ‘origin’ to the local repo in the cwd. If there is no local repo, it will be created first.",
+			"detail": "Creates a new repo on GitHub and adds it as remote ‘origin’ to the local repo in the cwd, replacing a preexisting ‘origin’, if any. If there is no local repo, it will be created first.",
 			"type": "shell",
-			"command": "[ -d .git ] || git init && hub create ${input:createGHRepo.pOpt} ${input:createGHRepo.projectName}",
+			"command": "[ -d .git ] || git init && { git remote remove origin 2>/dev/null || :; } && hub create ${input:createGHRepo.pOpt} ${input:createGHRepo.projectName}",
 			"problemMatcher": []
 		},
 		{
