@@ -11,19 +11,14 @@
 		// 	"problemMatcher": []
 		// },
 		{
-			"label": "Git: Create GitHub Repo",
-			"detail": "Creates a new repo on GitHub and adds it as remote ‘origin’ to the local repo in the cwd, replacing a preexisting ‘origin’, if any. If there is no local repo, it will be created first.",
-			"type": "shell",
-			"command": "[ -d .git ] || git init && { git remote remove origin 2>/dev/null || :; } && hub create ${input:createGHRepo.pOpt} $(sed \"s/%d/$(basename \"$(pwd)\")/\" <<<\"${input:createGHRepo.projectName}\")",
-			"problemMatcher": []
-		},
-		{
 			"label": "Add gjs typings",
 			"detail": "Adds Gnome JavaScript typings to the current project. ‘@ci-types/gjs’ must be installed globally for this to work.",
 			"type": "shell",
 			"command": "npm link @ci-types/gjs && echo '{ \"exclude\": [\"node_modules\"] }' >jsconfig.json && mkdir typings && echo 'import \"@ci-types/gjs\";' >typings/gjs.d.ts",
 			"problemMatcher": []
 		},
+
+		// Meson Tasks
 		{
 			"label": "Meson project: Configure",
 			"type": "shell",
@@ -69,6 +64,18 @@
 				"clear": true
 			}
 		},
+
+		// Git Tasks
+
+		{
+			"label": "Git: Create GitHub Repo",
+			"detail": "Creates a new repo on GitHub and adds it as remote ‘origin’ to the local repo in the cwd, replacing a preexisting ‘origin’, if any. If there is no local repo, it will be created first.",
+			"type": "shell",
+			"command": "[ -d .git ] || git init && { git remote remove origin 2>/dev/null || :; } && hub create ${input:createGHRepo.pOpt} $(sed \"s/%d/$(basename \"$(pwd)\")/\" <<<\"${input:createGHRepo.projectName}\")",
+			"problemMatcher": []
+		},
+
+		// Rebase
 		{
 			"label": "Git: Begin interactive rebase with autostash",
 			"type": "shell",
@@ -117,6 +124,8 @@
 				"clear": true
 			}
 		},
+
+		// Commit
 		{
 			"label": "Git: Commit Staged (Amend)",
 			"type": "shell",
@@ -152,6 +161,7 @@
 	],
 	"inputs":
 	[
+		// Git: Create GitHub Repo
 		{
 			"id": "createGHRepo.projectName",
 			"description": "Enter the name for new GitHub repo. You may use ‘%d’ to insert the name of the cwd. Leave empty to just use the name of the cwd.",
@@ -163,6 +173,8 @@
 			"type": "pickString",
 			"options": ["-p", ""],
 		},
+
+		// Git: Begin interactive rebase with autostash
 		{
 			"id": "gitRebaseArgRebaseMergesOrEmpty",
 			"description": "Choose ‘--rebase-merges’ if you want to preserve merge commits or leave empty if you don't want.",
