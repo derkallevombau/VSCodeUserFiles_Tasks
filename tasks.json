@@ -71,7 +71,7 @@
 			"label": "Git: Create GitHub Repo",
 			"detail": "Creates a new repo on GitHub and adds it as remote ‘origin’ to the local repo in the cwd, replacing a preexisting ‘origin’, if any. If there is no local repo, it will be created first.",
 			"type": "shell",
-			"command": "[ -d .git ] || git init && { git remote remove origin 2>/dev/null || :; } && hub create ${input:createGHRepo.pOpt} $(sed \"s/%d/$(basename \"$(pwd)\")/\" <<<\"${input:createGHRepo.projectName}\")",
+			"command": "[ -d .git ] || git init && { url=$(git remote get-url origin 2>/dev/null) && { echo -en \"\\e[1m\\e[97mWarning: origin is already set to $url. Do you really want to replace it?\\e[0m \\e[97m[y/N] \\e[1m\"; command -v tput >/dev/null && haveTput=1; ((haveTput)) && tput sc; while true; do read -n 1 ans; case $ans in '') echo -en \"\\e[0m\" ;;& [yYnN]) echo -e \"\\e[0m\" ;;& [yY]) break ;; [nN]|'') echo -e \"\nAborted.\"; exit ;; *) ((haveTput)) && tput rc && tput el ;; esac; done } || :; } && hub create ${input:createGHRepo.pOpt} $(sed \"s/%d/$(basename \"$(pwd)\")/\" <<<\"${input:createGHRepo.projectName}\")",
 			"problemMatcher": []
 		},
 
