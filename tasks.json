@@ -19,10 +19,42 @@
 		},
 
 		// Meson Tasks
+
+		{
+			"label": "Meson project: Setup",
+			"detail": "Tells Meson to use ‘<Workspace root>/build’ as build dir. A preexisting build dir will be deleted first. Finally, the current project configuration is printed.",
+			"type": "shell",
+			"command": "rm -rf build && meson setup build . && echo && meson configure build",
+			"problemMatcher": [],
+			"presentation":
+			{
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": true
+			}
+		},
 		{
 			"label": "Meson project: Configure",
 			"type": "shell",
-			"command": "mkdir -p build && meson setup -Dbuildtype=release -Ddebug=false -Doptimization=3 -Dstrip=true -Db_lto=true -Db_lto_threads=4 build .",
+			"command": "meson configure build ${input:mesonCfgOpts}",
+			"problemMatcher": [],
+			"presentation":
+			{
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": true
+			}
+		},
+		{
+			"label": "Meson project: Print Config",
+			"type": "shell",
+			"command": "meson configure build",
 			"problemMatcher": [],
 			"presentation":
 			{
@@ -161,6 +193,15 @@
 	],
 	"inputs":
 	[
+		// Meson Tasks
+		{
+			"id": "mesonCfgOpts",
+			"description": "Set build options via ‘-Dopt=value’.",
+			"type": "promptString",
+			"default": "-Dbuildtype=release -Ddebug=false -Doptimization=3 -Dstrip=true -Db_lto=true -Db_lto_threads=4"
+
+		},
+
 		// Git: Create GitHub Repo
 		{
 			"id": "createGHRepo.projectName",
