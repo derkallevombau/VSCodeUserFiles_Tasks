@@ -190,6 +190,25 @@
 				"clear": true
 			}
 		},
+
+		// Other Tasks
+
+		{
+			"label": "Install downloaded update",
+			"detail": "Installs the VS Code deb package in ~/Downloads (highest version if there are multiple) and deletes it after successful installation.",
+			"type": "shell",
+			"command": "cd ~/Downloads; debs=(code-insiders*); ((! ${debs[@]})) && echo 'No VS Code deb package found in ~/Downloads, exiting.' && exit 1; newestDeb=${debs[-1]}; sudo --askpass dpkg -i $newestDeb && rm $newestDeb",
+			"problemMatcher": [],
+			"presentation":
+			{
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": true
+			}
+		}
 	],
 	"inputs":
 	[
