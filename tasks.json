@@ -157,6 +157,24 @@
 			}
 		},
 
+		// Add (because sudo doesn't work ATM when called from within an extension)
+		{
+			"label": "Git: Add",
+			"type": "shell",
+			"command": "exec-in-git-repo-root-dir git add ${file}",
+			"options": { "cwd": "${fileDirname}" },
+			"problemMatcher": [],
+			"presentation":
+			{
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": true
+			}
+		},
+
 		// Commit
 		{
 			"label": "Git: Commit Staged (Amend)",
@@ -191,6 +209,25 @@
 			}
 		},
 
+		// Shellscript Tasks
+
+		{
+			"label": "Shellscript: Run with 'set -vx' below shebang",
+			"type": "shell",
+			"command": "f=${file}; addr=\"\\%#! ?(/usr)?/bin/%\"; sed -Ei -e \"${addr}a\\\" -e \"set -vx\" \"$f\"",
+			"options": { "cwd": "${fileDirname}" },
+			"problemMatcher": [],
+			"presentation":
+			{
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": true
+			}
+		},
+
 		// Other Tasks
 
 		{
@@ -208,7 +245,7 @@
 				"showReuseMessage": true,
 				"clear": true
 			}
-		}
+		},
 	],
 	"inputs":
 	[
