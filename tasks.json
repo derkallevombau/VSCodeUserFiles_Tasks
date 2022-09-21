@@ -38,6 +38,7 @@
 		},
 		{
 			"label": "Meson project: Configure",
+			"detail": "Run \"Meson project: Print Config\" to see available options.",
 			"type": "shell",
 			"command": "meson configure build ${input:mesonCfgOpts}",
 			"problemMatcher": [],
