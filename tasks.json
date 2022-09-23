@@ -187,7 +187,7 @@
 			{
 				"echo": true,
 				"reveal": "always",
-				"focus": false,
+				"focus": true,
 				"panel": "shared",
 				"showReuseMessage": true,
 				"clear": true
@@ -203,7 +203,7 @@
 			{
 				"echo": true,
 				"reveal": "always",
-				"focus": false,
+				"focus": true,
 				"panel": "shared",
 				"showReuseMessage": true,
 				"clear": true
@@ -219,7 +219,7 @@
 			{
 				"echo": true,
 				"reveal": "always",
-				"focus": false,
+				"focus": true,
 				"panel": "shared",
 				"showReuseMessage": true,
 				"clear": true
