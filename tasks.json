@@ -212,8 +212,8 @@
 		{
 			"label": "Git: Commit using mtime (append selection to commit message)",
 			"type": "shell",
-			"command": "exec-in-git-repo-root-dir git-commit-using-mtime --append-to-msg '${selectedText}'",
-			"options": { "cwd": "${fileDirname}" },
+			"command": "eval exec-in-git-repo-root-dir git-commit-using-mtime --append-to-msg ${selText@Q}",
+			"options": { "cwd": "${fileDirname}", "env": { "selText": "${selectedText}" } },
 			"problemMatcher": [],
 			"presentation":
 			{
