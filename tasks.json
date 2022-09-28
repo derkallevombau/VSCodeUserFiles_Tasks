@@ -229,9 +229,9 @@
 		// Don't ignore
 		{
 			"label": "Git: Don't ignore",
-			"detail": "If the current file is listed in a .gitignore in the same dir, the respective line will be removed. If .gitignore begins with an asterisk, the current file's name will be added to .gitignore, prefixed with an asterisk.",
+			"detail": "If the current file is listed in a .gitignore in the same dir, the respective line will be removed. If .gitignore begins with an asterisk, the current file's name will be added to .gitignore, prefixed with an exclamation mark.",
 			"type": "shell",
-			"command": "[[ -f .gitignore ]] || echo 'No .gitignore, nothing to do!' && exit 1",
+			"command": "gitignore-dont-ignore-file",
 			"options": { "cwd": "${fileDirname}" },
 			"problemMatcher": [],
 			"presentation":
